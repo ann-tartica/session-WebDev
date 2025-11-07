@@ -104,11 +104,12 @@ $html = <<<HTML
     <div id="loginModal" class="modal-overlay">
         <div class="modal-box">
             <h2>Login</h2>
-            <form id="loginForm">
-                <input type="text" name="username" placeholder="Username or Email" required>
-                <input type="password" name="password" placeholder="Password" required>
-                <button type="submit">Login</button>
-            </form>
+      <form id="loginForm">
+        <input type="text" name="username" placeholder="Username or Email" required>
+        <input type="password" name="password" placeholder="Password" required>
+        <input type="hidden" name="redirect" id="loginRedirect" value="">
+        <button type="submit">Login</button>
+      </form>
             <p>No account yet? <a href="#" id="openSignup">Sign up here</a></p>
         </div>
     </div>

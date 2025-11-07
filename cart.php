@@ -94,16 +94,11 @@ include "misc/cart_handler.php";
                 showCart();
             ?>
         </div>
-        <!-- <div id="empty-cart" class="text-center py-5">
-          <i class="fas fa-shopping-cart fa-5x text-muted mb-4"></i>
-          <h3>Cart is empty.</h3>
-          <p class="text-muted">Add some products to get started!</p>
-          <a href="products.html" class="btn btn-primary">
-            <i class="fas fa-shopping-bag"></i> Continue Shopping
-          </a>
-        </div> -->
       </div>
-      <?php showOrderSummary(); ?>
+      <?php 
+      $isLoggedIn = isset($_SESSION['user_id']);
+      showOrderSummary($isLoggedIn); 
+      ?>
       <!-- <div class="col-lg-4">
         <div class="card">
           <div class="card-header">
@@ -209,6 +204,19 @@ include "misc/cart_handler.php";
   <!-- Your custom modal script -->
   <script src="./js/modals.js"></script>
   <script src="./js/loginsign.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        var guestBtn = document.getElementById('guest-checkout-btn');
+        if (guestBtn) {
+          guestBtn.addEventListener('click', function(e) {
+            // Show alert then redirect to login/index
+            alert('User is not logged in. Please log in to proceed check out');
+            var redirect = guestBtn.getAttribute('data-redirect') || 'index.php';
+            window.location.href = redirect;
+          });
+        }
+      });
+    </script>
   <!-- <script src="./js/quantity.js"></script> -->
   
 </body>

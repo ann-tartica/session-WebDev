@@ -274,7 +274,16 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['cart_item'])) {
 
 // -------------------- CHECKOUT --------------------
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['checkout'])) {
-    $user_id = $_SESSION['user_id'] ?? 0;
+    // Server-side check: only logged-in users can checkout
+    if (!isset($_SESSION['user_id'])) {
+        echo "<script>
+            alert('User is not logged in. Please log in to proceed check out');
+            window.location.href = 'index.php';
+        </script>";
+        exit();
+    }
+
+    $user_id = $_SESSION['user_id'];
     $query = "DELETE FROM cart WHERE user_id = $user_id";
 
     if (mysqli_query($conn, $query)) {
@@ -431,15 +440,27 @@ function showCartTotal($subtotal)
     HTML;
 }
 
-function showOrderSummary()
+function showOrderSummary($isLoggedIn = false)
 {
     global $subtotal;
     $formattedTotal = number_format($subtotal, 2);
+
+    if ($isLoggedIn) {
+        $checkoutBtn = '<button type="submit" class="btn btn-success w-100 mb-2" id="checkout-btn">
+                     <i class="fas fa-credit-card"></i> Proceed to Checkout
+                 </button>';
+    } else {
+        // For guests: alert and redirect on click
+        $checkoutBtn = '<button type="button" class="btn btn-success w-100 mb-2" onclick="alert(\'User is not logged in. Please log in to proceed check out\'); window.location.href=\'index.php\';">
+                     <i class="fas fa-sign-in-alt"></i> Login to Checkout
+                 </button>';
+    }
+
     echo <<<HTML
     <div class="col-lg-4">
         <div class="card">
           <div class="card-header">
-            <h5 class="mb-0"id="contact-header">Order Summary</h5>
+            <h5 class="mb-0" id="contact-header">Order Summary</h5>
           </div>
           <div class="card-body">
             <div class="d-flex justify-content-between mb-2">
@@ -459,9 +480,10 @@ function showOrderSummary()
               <strong>Total:</strong>
               <strong id="total">₱{$formattedTotal}</strong>
             </div>
-            <button class="btn btn-success w-100 mb-2" id="checkout-btn" disabled>
-              <i class="fas fa-credit-card"></i> Proceed to Checkout
-            </button>
+            <form action="cart.php" method="post">
+                <input type="hidden" name="checkout" value="checkout">
+                {$checkoutBtn}
+            </form>
             <a href="products.php" class="btn btn-outline-primary w-100">
               <i class="fas fa-arrow-left"></i> Continue Shopping
             </a>

@@ -2,15 +2,21 @@ $(document).ready(function() {
     // Handle login form
     $('#loginForm').on('submit', function(e) {
         e.preventDefault();
+        var form = $(this);
         $.ajax({
              url: 'misc/login_handler.php', // adjust path
             type: 'POST',
-            data: $(this).serialize(),
+            data: form.serialize(),
             dataType: 'json',
             success: function(response) {
                 if (response.success) {
-                    alert("Login successful!");
-                    location.reload(); // ✅ Reload to update navbar session state
+                    var redirect = $('#loginRedirect').val();
+                    if (redirect && redirect.length > 0) {
+                        window.location.href = redirect;
+                    } else {
+                        alert("Login successful!");
+                        location.reload(); // ✅ Reload to update navbar session state
+                    }
                 } else {
                     alert(response.message);
                 }

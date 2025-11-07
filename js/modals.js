@@ -14,18 +14,24 @@ $(function () {
   });
 
   // Login form via AJAX
-  $('#loginForm').on('submit', function (e) {
+    $('#loginForm').on('submit', function (e) {
     e.preventDefault();
+    var form = $(this);
     $.ajax({
       url: 'misc/login_handler.php',
       method: 'POST',
-      data: $(this).serialize(),
+      data: form.serialize(),
       dataType: 'json'
     }).done(function (res) {
       if (res.success) {
-        // Option: show a success, then reload to apply session changes
-        alert(res.message || 'Login successful');
-        location.reload();
+        // If a redirect was set, go there; otherwise reload to update session state
+        var redirect = $('#loginRedirect').val();
+        if (redirect && redirect.length > 0) {
+          window.location.href = redirect;
+        } else {
+          alert(res.message || 'Login successful');
+          location.reload();
+        }
       } else {
         alert(res.message || 'Login failed');
       }

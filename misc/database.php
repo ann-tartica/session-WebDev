@@ -2,7 +2,7 @@
     $db_server = "localhost";
     $db_user = "root";
     
-    $db_pass = 'root'; //reizu
+    $db_pass = 'maryanniniego'; //reizu
     $db_name = 'vivace_db'; //reizu
     $conn = "";
 
