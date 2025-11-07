@@ -1,6 +1,7 @@
 <?php
-require_once __DIR__ . "/session_check.php";
+
 include "database.php";
+
 
 $sql1 = "SELECT COUNT(*) as total from products";
 $result = mysqli_query($conn, $sql1);

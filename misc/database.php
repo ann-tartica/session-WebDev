@@ -2,8 +2,8 @@
     $db_server = "localhost";
     $db_user = "root";
     
-    $db_pass = 'maryanniniego'; //reizu
-    $db_name = 'vivace_db'; //reizu
+    $db_pass = 'maryanniniego'; //iniego
+    $db_name = 'vivace_db'; //iniego
     $conn = "";
 
     try {

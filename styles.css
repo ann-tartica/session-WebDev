@@ -781,4 +781,8 @@ p{
   gap: 0.5rem !important;
 }
 
+/* card space on index.php */
+#cardspace{
+  margin-bottom: -50px;
+}
 

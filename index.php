@@ -61,7 +61,11 @@ include "misc/cart_handler.php";
             <div class="card-body">
               <i class="fas fa-shipping-fast fa-3x text-primary mb-3"></i>
               <h5 class="card-title">Free Shipping</h5>
-              <p class="card-text">Free shipping on orders over $50</p>
+              <p  class="card-text mb-0 fw-semibold"> Free shipping on orders over $50!  </p>
+       <p class="card-text fst-italic" id="cardspace"> Worldwide delivery on your orders  
+              no extra fees, no hidden charges! We believe great products deserve an equally great shopping experience,
+               and that starts with stress-free delivery.
+              </p>
             </div>
           </div>
         </div>
@@ -70,7 +74,10 @@ include "misc/cart_handler.php";
             <div class="card-body">
               <i class="fas fa-undo fa-3x text-primary mb-3"></i>
               <h5 class="card-title">Easy Returns</h5>
-              <p class="card-text">30-day return policy</p>
+              <p class="card-text mb-0 fw-semibold">30-day return policy</p>
+              <p class="card-text fst-italic">We want you to love every purchase you make with us. 
+                But if something isn’t quite right, 
+                our Easy Return Policy has you covered!</p>
             </div>
           </div>
         </div>
@@ -79,7 +86,9 @@ include "misc/cart_handler.php";
             <div class="card-body">
               <i class="fas fa-headset fa-3x text-primary mb-3"></i>
               <h5 class="card-title">24/7 Support</h5>
-              <p class="card-text">Customer support anytime</p>
+              <p class="card-text mb-0 fw-semibold">Customer support anytime</p>
+              <p class="card-text fst-italic">No matter the time or day, our dedicated support team is ready to help. Whether you have questions about your order, 
+                need assistance with a product, or just want expert advice — we’re only a message away.</p>
             </div>
           </div>
         </div>
@@ -88,7 +97,9 @@ include "misc/cart_handler.php";
             <div class="card-body">
               <i class="fas fa-guitar fa-3x text-primary mb-3"></i>
               <h5 class="card-title">Quality Instruments</h5>
-              <p class="card-text">Highest Quality of Instruments and Tools</p>
+              <p class="card-text mb-0 fw-semibold">Highest Quality of Instruments and Tools</p>
+              <p class="card-text fst-italic">At Vivace, we are passionate about providing musicians and enthusiasts with instruments that inspire creativity and elevate performance. 
+                Each product in our collection is carefully selected for its craftsmanship, sound quality, and durability.</p>
             </div>
           </div>
         </div>

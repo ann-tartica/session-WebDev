@@ -1,6 +1,6 @@
 <?php
 session_start();
-include __DIR__ . "/database.php"; // adjust path if needed
+include __DIR__ . "/database.php"; 
 header('Content-Type: application/json');
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
